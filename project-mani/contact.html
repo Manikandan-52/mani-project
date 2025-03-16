@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact - Zoro Store</title>
+    <link rel="stylesheet" href="style/style.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        .contact-container {
+            width: 90%;
+            max-width: 600px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: #f9f9f9;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            border-radius: 8px;
+        }
+        .contact-container h2 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .contact-container form {
+            display: flex;
+            flex-direction: column;
+        }
+        .contact-container label {
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        .contact-container input,
+        .contact-container textarea {
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 1em;
+        }
+        .contact-container button {
+            padding: 12px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            font-size: 1em;
+            cursor: pointer;
+            border-radius: 4px;
+        }
+        .contact-container button:hover {
+            background-color: #0056b3;
+        }
+        .success-message {
+            text-align: center;
+            color: green;
+            margin-top: 15px;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Zoro Store</h1>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="products.html">Products</a></li>
+                <li><a href="cart.html">Cart</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="contact-container">
+        <h2>Contact Us</h2>
+        <form id="contactForm">
+            <label for="name">Full Name</label>
+            <input type="text" id="name" name="name" placeholder="Your full name" required>
+
+            <label for="email">Email Address</label>
+            <input type="email" id="email" name="email" placeholder="Your email address" required>
+
+            <label for="phone">Phone Number</label>
+            <input type="tel" id="phone" name="phone" placeholder="Optional">
+
+            <label for="message">Your Message</label>
+            <textarea id="message" name="message" rows="5" placeholder="Type your message here..." required></textarea>
+
+            <button type="submit">Send Message</button>
+        </form>
+        <div id="successMessage" class="success-message" style="display:none;">
+            Thank you! Your message has been sent.
+        </div>
+    </section>
+
+    <script>
+        // Simple form submit handler (can be connected to backend later)
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault(); // Prevent actual form submission
+
+            // Here you can handle sending the data to your backend using fetch or ajax
+
+            // Just display a simple message for now
+            document.getElementById('successMessage').style.display = 'block';
+
+            // Optionally clear the form
+            document.getElementById('contactForm').reset();
+        });
+    </script>
+
+</body>
+</html>
