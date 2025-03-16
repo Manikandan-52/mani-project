@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Details - Zoro Store</title>
+    <link rel="stylesheet" href="style/product-details.css">
+    <style>
+        /* Simple styles for the cart summary display */
+        #cart-summary {
+            position: fixed;
+            top: 80px;
+            right: 20px;
+            width: 300px;
+            background-color: #f9f9f9;
+            border: 1px solid #ccc;
+            padding: 15px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.2);
+            display: none;
+            z-index: 1000;
+        }
+        #cart-summary img {
+            width: 80px;
+            height: auto;
+        }
+    </style>
+    <script>
+        function addToCart(productName, productPrice, productImage) {
+            // Get cart from local storage, or initialize as an empty array if not found
+            let cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+            // Create a new product object
+            const product = { name: productName, price: productPrice, image: productImage };
+
+            // Add the product to the cart array
+            cart.push(product);
+
+            // Save the updated cart to local storage
+            localStorage.setItem('cart', JSON.stringify(cart));
+
+            // Display product info in the cart summary
+            showCartSummary(product);
+        }
+
+        function showCartSummary(product) {
+            const cartSummary = document.getElementById('cart-summary');
+            cartSummary.innerHTML = `
+                <h3>Added to Cart</h3>
+                <img src="${product.image}" alt="${product.name}">
+                <p><strong>${product.name}</strong></p>
+                <p>Price: ${product.price}</p>
+                <button onclick="window.location.href='cart.html'">Go to Cart</button>
+                <button onclick="closeCartSummary()">Close</button>
+            `;
+            cartSummary.style.display = 'block';
+        }
+
+        function closeCartSummary() {
+            const cartSummary = document.getElementById('cart-summary');
+            cartSummary.style.display = 'none';
+        }
+    </script>
+</head>
+<body>
+
+    <header>
+        <h1>I PLANET</h1>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="products.html">Products</a></li>
+                <li><a href="cart.html">Cart</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Product Details -->
+    <section class="product-detail">
+        <div class="product">
+            <img src="images/image 1.jpg" alt="iphone 10">
+            <h2>iphone 10</h2>
+            <p>High-quality various mobile models.</p>
+            <p><strong>Price: RS/20000</strong></p>
+            <button onclick="addToCart('iphone 10', 'RS/20000', 'images/image 1.jpg')">Add to Cart</button>
+        </div>
+
+        <div class="product">
+            <img src="images/image 2" alt="iphone 11">
+            <h2>iphone 11</h2>
+            <p>High-quality various mobile models.</p>
+            <p><strong>Price: RS/32000</strong></p>
+            <button onclick="addToCart('iphone 11', 'RS/32000', 'images/image 2')">Add to Cart</button>
+        </div>
+
+        <div class="product">
+            <img src="images/image 3.jpg" alt="iphone 12">
+            <h2>iphone 12</h2>
+            <p>High-quality various mobile models.</p>
+            <p><strong>Price: RS/40000</strong></p>
+            <button onclick="addToCart('iphone 12', 'RS/40000', 'images/image 3.jpg')">Add to Cart</button>
+        </div>
+
+        <div class="product">
+            <img src="images/image 4.jpg" alt="iphone 13">
+            <h2>iphone 13</h2>
+            <p>High-quality various mobile models.</p>
+            <p><strong>Price: RS/52000</strong></p>
+            <button onclick="addToCart('iphone 13', 'RS/52000', 'images/image 4.jpg')">Add to Cart</button>
+        </div>
+
+        <div class="product">
+            <img src="images/image 5.jpg" alt="iphone 14">
+            <h2>iphone 14</h2>
+            <p>High-quality various mobile models.</p>
+            <p><strong>Price: RS/60000</strong></p>
+            <button onclick="addToCart('iphone 14', 'RS/60000', 'images/image 5.jpg')">Add to Cart</button>
+        </div>
+
+        <div class="product">
+            <img src="images/image 6.jpg" alt="iphone 15">
+            <h2>iphone 15</h2>
+            <p>High-quality various mobile models.</p>
+            <p><strong>Price: RS/75000</strong></p>
+            <button onclick="addToCart('iphone 15', 'RS/75000', 'images/image 6.jpg')">Add to Cart</button>
+        </div>
+
+        <div class="product">
+            <img src="images/image 7.jpg" alt="iphone 16">
+            <h2>iphone 16</h2>
+            <p>High-quality various mobile models.</p>
+            <p><strong>Price: RS/95000</strong></p>
+            <button onclick="addToCart('iphone 16', 'RS/95000', 'images/image 7.jpg')">Add to Cart</button>
+        </div>
+
+        <div class="product">
+            <img src="images/image 8.webp" alt="iphone 15pro">
+            <h2>iphone 15pro</h2>
+            <p>High-quality various mobile models.</p>
+            <p><strong>Price: RS/105000</strong></p>
+            <button onclick="addToCart('iphone 15pro', 'RS/105000', 'images/image 8.webp')">Add to Cart</button>
+        </div>
+
+        <div class="product">
+            <img src="images/image 9.png" alt="iphone 16pro">
+            <h2>iphone 16pro</h2>
+            <p>High-quality various mobile models.</p>
+            <p><strong>Price: RS/125000</strong></p>
+            <button onclick="addToCart('iphone 16pro', 'RS/125000', 'images/image 9.png')">Add to Cart</button>
+        </div>
+    </section>
+
+    <!-- Cart Summary Popup -->
+    <div id="cart-summary"></div>
+
+</body>
+</html>
